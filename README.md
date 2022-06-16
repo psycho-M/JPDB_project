@@ -1,6 +1,6 @@
 # JPDB_project
 
-###Description
+### Description
 
 - This is a simple project on JsonPowerDB to learn the basics about this database using the CRUD operations.
 
@@ -12,25 +12,25 @@
 - It is low level (raw) form of data and is also human readable.
 - It helps developers in faster coding, in-turn reduces development cost.
 
-###Release History
+### Release History
 - v1.0 - initial commit with put operation.
 
-###Table of contents
+### Table of contents
 
 
-###Illustrations
+### Illustrations
 
 
-###Scope of functionalities
+### Scope of functionalities
 
 
-###Examples of use
+### Examples of use
 
 
-###Project status
+### Project status
 
 
-###Sources
+### Sources
 
 
-###Other information
+### Other information
