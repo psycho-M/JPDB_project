@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>View All Employees</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
+    </head>
+    <body onload='getAllEmployees();'>
+        <div class="container">
+            <h2>View All Employees</h2>
+        </div>
+
+        <script>
+            function createGETALLSyncRecordRequest(token, dbName, relName, timeStamp, pageNo, pageSize, createTime, updateTime) {
+                if (createTime !== undefined) {
+                    if (createTime !== true) {
+                        createTime = false;
+                    }
+                } else {
+                    createTime = false;
+                }
+                if (updateTime !== undefined) {
+                    if (updateTime !== true) {
+                        updateTime = false;
+                    }
+                } else {
+                    updateTime = false;
+                }
+                var req = "{\n"
+                        + "\"token\" : \""
+                        + token
+                        + "\","
+                        + "\"dbName\": \""
+                        + dbName
+                        + "\",\n" + "\"cmd\" : \"GET_ALL\",\n"
+                        + "\"rel\" : \""
+                        + relName + "\""
+                        + "\n"
+                        + "}";
+                return req;
+            }
+            
+            function loadHome() {
+                window.location.href = 'index.html';
+            }
+
+            function getAllEmployees() {
+                var token = '90938882|-31949290450926294|90941367';
+                var dbName = 'SAMPLE_EMPLOYEE';
+                var rel = 'Emp-Rel';
+                var req = createGETALLSyncRecordRequest(token, dbName, rel);
+                console.log(req);
+                var baseUrl = 'http://api.login2explore.com:5577';
+                var endPoint = '/api/irl';
+                jQuery.ajaxSetup({async: false});
+                var allEmployeeJson = executeCommandAtGivenBaseUrl(req, baseUrl, endPoint);
+                alert("This is the format I'm gonna leave it at, as it is very annoting to disect the whole thing, bad json return from api. \n" + JSON.stringify(allEmployeeJson));
+                jQuery.ajaxSetup({async: true});
+                
+                allEmployeeJson = JSON.stringify(allEmployeeJson);
+                allEmployeeJson = allEmployeeJson.split("\"");
+                console.log(allEmployeeJson);
+                loadHome();
+            }
+        </script>
+    </body>
+</html>

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
 -->
-<html lang="en">
+<html>
     <head>
         <title>Bootstrap Example</title>
         <meta charset="utf-8">
@@ -15,12 +14,12 @@ and open the template in the editor.
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        
+
         <script src="http://login2explore.com/jpdb/resources/js/0.0.3/jpdb-commons.js"></script>
     </head>
     <body>
         <div class="container">
-            <h2>Vertical (basic) form</h2>
+            <h2>Add Employee</h2>
             <form id="empForm" method="post">
                 <div class="form-group">
                     <span><label for="empId">Employee ID:</label> <label id="empIdMsg">
@@ -72,13 +71,17 @@ and open the template in the editor.
                 return JSON.stringify(jsonStrObj);
             }
 
-            
-            
+
+
             function resetForm() {
                 $("#empId").val("");
                 $("#empName").val("");
                 $("#empEmail").val("");
                 $("#empId").focus();
+            }
+            
+            function loadHome() {
+                window.location.href = 'index.html';
             }
 
 
@@ -88,13 +91,17 @@ and open the template in the editor.
                     return;
                 }
                 var putReqStr = createPUTRequest("90938882|-31949290450926294|90941367", jsonStr, "SAMPLE_EMPLOYEE", "Emp-Rel");
-                alert(putReqStr);
+//                alert(putReqStr);
                 jQuery.ajaxSetup({async: false});
-                var resultObj = executeCommandAtGivenBaseUrl(putReqStr,"http://api.login2explore.com:5577", "/api/iml");
+                var resultObj = executeCommandAtGivenBaseUrl(putReqStr, "http://api.login2explore.com:5577", "/api/iml");
                 alert(JSON.stringify(resultObj));
                 jQuery.ajaxSetup({async: true});
                 resetForm();
+                loadHome();
             }
+
+            
+
 
         </script>
     </body>
