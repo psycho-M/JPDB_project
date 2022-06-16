@@ -20,6 +20,7 @@
 
 ### Illustrations
 
+![image](https://user-images.githubusercontent.com/61588507/174126329-b1db94a0-3ba3-4c60-87f9-a5f4ef14baa4.png)
 
 ### Scope of functionalities
 
